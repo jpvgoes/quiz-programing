@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fases</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles-fases.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Seleção de Fases</h1>
+        <div class="levels">
+            <div class="level" data-level="1">
+                <a href=" {{url_for('fase1')}} ">
+                <img src="{{url_for('static', filename='level1.png')}}" alt="Fase 1" class="level-image">
+                </a>
+                <span>Fase 1</span>
+            </div>
+            <div class="level locked" data-level="2">
+                <a href=" {{url_for('fase2')}} ">
+                <img src="{{url_for('static', filename='level2.png')}}" alt="Fase 2" class="level-image">
+                </a>
+                <span>Fase 2</span>
+            </div>
+            <div class="level locked" data-level="3">
+                <a href=" {{url_for('fase3')}} ">
+                <img src="{{url_for('static', filename='level3.png')}}" alt="Fase 3" class="level-image">
+                </a>
+                <span>Fase 3</span>
+            </div>
+        </div>
+        <div class="progress-line">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <a href="{{ url_for('homepage') }}" id="homeButton" class="start-button">Recomeçar</a>
+    </div>
+
+</body>
+</html>

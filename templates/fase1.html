@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz de Programação</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles-fase1.css') }}">
+</head>
+<body>
+    <h1>Quiz de Programação</h1>
+
+    {% if message %}
+        <p><strong>{{ message }}</strong></p>
+    {% endif %}
+
+    <form method="post">
+        {% for i, question in enumerate(quiz_data) %}
+        <div class="question">
+            <p><strong>{{ question.question }}</strong></p>
+            {% for option in question.options %}
+            <label>
+                <input type="radio" name="answer{{ i }}" value="{{ option }}" required> {{ option }}
+            </label><br>
+            {% endfor %}
+        </div>
+        {% endfor %}
+        <button type="submit">Enviar Respostas</button>
+    </form>
+</body>
+</html>

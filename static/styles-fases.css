@@ -1,0 +1,76 @@
+.levels {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.level {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 30px 10px 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.level:hover{
+    transform: scale(1.05);
+}
+
+.level-image {
+    width: 100px;
+    height: 100px;
+    filter: grayscale(100%);
+    transition: filter 0.3s;
+}
+
+.level.locked .level-image {
+    filter: grayscale(100%);
+}
+
+.level:not(.locked) .level-image {
+    filter: none;
+}
+
+.level span {
+    margin-top: 5px;
+    font-size: 18px;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    color: rgb(44, 27, 7);
+}
+
+.progress-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.progress-line::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #333;
+    z-index: -1;
+}
+
+.dot {
+    width: 20px; /* Tamanho do ponto */
+    height: 20px; /* Tamanho do ponto */
+    background-color: #cccccc; /* Cor do ponto não ativo */
+    border: #333;
+    border-style: solid;
+    border-radius: 50%; /* Deixa o ponto redondo */
+}
+
+.dot.active {
+    background-color: #333; /* Cor do ponto ativo */
+}
