@@ -1,13 +1,31 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fase 3</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles-fase3.css') }}">
 </head>
 <body>
-    <h1>Bem-vindo à Fase 3!</h1>
-    <p>Aqui está o conteúdo da fase 3.</p>
-    <a href="{{ url_for('fases') }}">Voltar para a Seleção de Fases</a>
+
+    <div class="container">
+        <h1>Fase 3</h1>
+        <form method="POST">
+            {% for idx, question in enumerate(questions) %}
+                <div class="question">
+                    <h3>{{ question.question }}</h3>
+                    {% for option in question.options %}
+                        <label>
+                            <input type="radio" name="question-{{ idx }}" value="{{ option }}" required>
+                            {{ option }}
+                        </label>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <button type="submit">Submit</button>
+        </form>
+        <a href="{{ url_for('fases') }}">Voltar</a>
+    </div>
+
 </body>
 </html>

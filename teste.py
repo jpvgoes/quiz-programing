@@ -1,5 +1,3 @@
-
-
 from flask import Flask,render_template,url_for,request
 
 app = Flask(__name__,template_folder="templates")
@@ -8,6 +6,7 @@ app = Flask(__name__,template_folder="templates")
 @app.route("/")
 def homepage():
     return render_template("index.html")
+
 
 #rota das fases
 @app.route("/fases")
@@ -26,6 +25,7 @@ def fase1():
         {"question": "Python é uma linguagem...", "options": ["Compilada", "Interpretada", "Marcada"],
          "answer": "Interpretada"}
     ]
+
 
     if request.method == "POST":
         # Obter respostas enviadas pelo usuário
@@ -47,9 +47,36 @@ def fase2():
     return render_template("fase2.html")
 
 #rota da fase3
-@app.route("/fases/fase3")
+@app.route("/fases/fase3",methods=["GET", "POST"])
 def fase3():
-    return render_template("fase3.html")
+    questions = [
+        {
+            "question": "What does HTML stand for?",
+            "options": ["Hyper Text Markup Language", "High Text Markup Language", "Hyper Tabular Markup Language",
+                        "None of these"],
+            "answer": "Hyper Text Markup Language"
+        },
+        {
+            "question": "Which language is used for styling web pages?",
+            "options": ["HTML", "CSS", "JavaScript", "PHP"],
+            "answer": "CSS"
+        },
+        {
+            "question": "Which is not a programming language?",
+            "options": ["Python", "Java", "HTML", "C++"],
+            "answer": "HTML"
+        }
+    ]
+    if request.method == 'POST':
+        # Process the quiz submission
+        score = 0
+        for idx, question in enumerate(questions):
+            selected_option = request.form.get(f'question-{idx}')
+            if selected_option == question['answer']:
+                score +=1
+        return render_template('result.html', score=score, total=len(questions))
+
+    return render_template('fase3.html', questions=questions,enumerate=enumerate)
 
 
 if __name__ == "__main__":

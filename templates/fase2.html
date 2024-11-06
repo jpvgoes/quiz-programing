@@ -4,180 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fase 2</title>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
-
-    <style>
-        .quiz-wrapper {
-  position: relative;
-  display: block;
-  width: 510px;
-  height: 450px;
-  p.question-description {
-    background: #19286C;
-    color: white;
-    padding: 25px 20px;
-  }
-  ul.options {
-    position: relative;
-    display: inline-block;
-    vertical-align: top;
-    width: 165px;
-    list-style: none;
-    border: 1px solid #19286C;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-    li {
-      border: 1px solid transparent;
-      padding: 6px 8px;
-    }
-    li.title {
-      background: #19286C;
-      color: white;
-    }
-    li.option {
-      display: block;
-      position: relative;
-      z-index: 50;
-      font-size: 13px;
-    }
-  }
-  .answers {
-    display: inline-block;
-    width: 335px;
-    font-size: 13px;
-    line-height: 20px;
-    .target {
-     display: inline-block;
-      width: 110px;
-      background: lightblue;
-      margin: 0 3px;
-      text-align:center;
-    }
-  }
-  button[type="submit"] {
-    display:block;
-    position: relative;
-    margin:10px auto;
-    padding: 10px;
-    background: #19286C;
-    border: none;
-    color: white;
-    font-size: 16px;
-  }
-}
-.lightbox-bg {
-  display: none;
-  position: absolute;
-  z-index: 100;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: rgba( 0,0,0,.7 );
-}
-.status {
-  display: none;
-  position: absolute;
-  z-index: 110;
-  text-align:center;
-  width: 80%;
-  top: 220px;
-  left: 47px;
-  p {
-    background: white;
-    padding: 30px;
-  }
-}
-    </style>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles-fase2.css')}}">
 </head>
 <body>
+    <h1>Fase 2 - Quiz de Computação</h1>
 
-<div class="quiz-wrapper">
-	<p class="question-description">Fill in the blanks by dragging the missing answer.</p>
-	<ul class="options">
-		<li class="title">Options</li>
-		<li class="option" data-target="carraway">Nick Carraway</li>
-		<li class="option" data-target="fitz">F. Scott Fitzgerald</li>
-		<li class="option" data-target="westegg">West Egg</li>
-		<li class="option" data-target="buchanan">Tom Buchanan</li>
-		<li class="option" data-target="daisy">Daisy</li>
-		<li class="option" data-target="ashes">Valley of Ashes</li>
-	</ul>
-<div class="answers">
-	<ol>
-		<li><span class="target" data-accept="fitz">&nbsp;</span>, a native of St Paul, Minnesota, and also a member of the "Lost Generation" finished four novels including "This Side of Paradise".</li>
-		<li><span class="target" data-accept="carraway">&nbsp;</span> attended Yale with the large and brooding<span class="target" data-accept="buchanan">&nbsp;</span>.</li>
-		<li>George Wilson owns an unsuccessful garage in an area known as the <span class="target" data-accept="ashes">&nbsp;</span>, where Tom brings Nick for a party.</li>
-		<li>Jay Gatsby, the Buchanans, and Nick himself all make<span class="target" data-accept="westegg">&nbsp;</span>their home.</li>
-	</ol>
-</div>
- <button type="submit" value="submit">Submit</button>
- <div class="lightbox-bg"></div>
- <div class="status confirm">
-   <p>All Answers Answered</p>
- </div>
- <div class="status deny">
-   <p>Answers Remain</p>
- </div>
-</div>
+    <div class="quiz-wrapper">
+        <p class="question-description">Preencha as lacunas arrastando a resposta correta.</p>
+        <ul class="options">
+            <li class="title">Opções</li>
+            <li class="option" data-target="algoritmo">Algoritmo</li>
+            <li class="option" data-target="complexidade">Complexidade</li>
+            <li class="option" data-target="recursao">Recursão</li>
+            <li class="option" data-target="variavel">Variável</li>
+            <li class="option" data-target="loop">Loop</li>
+            <li class="option" data-target="array">Array</li>
+        </ul>
+        <div class="answers">
+            <ol>
+                <li>Um <span class="target" data-accept="algoritmo">&nbsp;</span> é uma sequência de instruções para resolver um problema computacional.</li>
+                <li>A <span class="target" data-accept="complexidade">&nbsp;</span> de um algoritmo refere-se ao tempo e espaço que ele consome durante a execução.</li>
+                <li>Uma <span class="target" data-accept="variavel">&nbsp;</span> é um espaço na memória que armazena um valor em programação.</li>
+                <li>Um <span class="target" data-accept="loop">&nbsp;</span> é uma estrutura que permite repetir um bloco de código várias vezes.</li>
+                <li>A <span class="target" data-accept="recursao">&nbsp;</span> é uma técnica onde uma função chama a si mesma para resolver um problema.</li>
+                <li>Um <span class="target" data-accept="array">&nbsp;</span> é uma estrutura de dados que armazena elementos do mesmo tipo em sequência.</li>
+            </ol>
+        </div>
+        <button type="submit" value="submit">Enviar</button>
+        <div class="lightbox-bg"></div>
+        <div class="status confirm">
+            <p>Todas as respostas estão corretas!</p>
+        </div>
+        <div class="status deny">
+            <p>Ainda há respostas faltando.</p>
+        </div>
+    </div>
 
-<a href="{{ url_for('fases') }}">Voltar para a Seleção de Fases</a>
+    <a href="{{ url_for('fases') }}">Voltar</a>
 
-<script>
-    /**
-* Drag and drop quiz intended for an iBooks widget
-*/
+    <script>
 
-$(document).ready( function() {
-  //initialize the quiz options
-  var answersLeft = [];
-  $('.quiz-wrapper').find('li.option').each( function(i) {
-    var $this = $(this);
-    var answerValue = $this.data('target');
-    var $target = $('.answers .target[data-accept="'+answerValue+'"]');
-    var labelText = $this.html();
-    $this.draggable( {
-      revert: "invalid",
-      containment: ".quiz-wrapper"
+    $(document).ready( function() {
+      //initialize the quiz options
+      var answersLeft = [];
+      $('.quiz-wrapper').find('li.option').each( function(i) {
+        var $this = $(this);
+        var answerValue = $this.data('target');
+        var $target = $('.answers .target[data-accept="'+answerValue+'"]');
+        var labelText = $this.html();
+        $this.draggable( {
+          revert: "invalid",
+          containment: ".quiz-wrapper"
+        });
+
+        if ( $target.length > 0 ) {
+        $target.droppable( {
+            accept: 'li.option[data-target="'+answerValue+'"]',
+            drop: function( event, ui ) {
+              $this.draggable('destroy');
+              $target.droppable('destroy');
+              $this.html('&nbsp;');
+              $target.html(labelText);
+              answersLeft.splice( answersLeft.indexOf( answerValue ), 1 );
+            }
+        });
+        answersLeft.push(answerValue);
+        } else { }
+       });
+       $('.quiz-wrapper button[type="submit"]').click( function() {
+           if ( answersLeft.length > 0 ) {
+                $('.lightbox-bg').show();
+          $('.status.deny').show();
+          $('.lightbox-bg').click( function() {
+                  $('.lightbox-bg').hide();
+            $('.status.deny').hide();
+            $('.lightbox-bg').unbind('click');
+          });
+           } else {
+                $('.lightbox-bg').show();
+          $('.status.confirm').show();
+           }
+       });
     });
-
-    if ( $target.length > 0 ) {
-    $target.droppable( {
-        accept: 'li.option[data-target="'+answerValue+'"]',
-        drop: function( event, ui ) {
-          $this.draggable('destroy');
-          $target.droppable('destroy');
-          $this.html('&nbsp;');
-          $target.html(labelText);
-          answersLeft.splice( answersLeft.indexOf( answerValue ), 1 );
-        }
-    });
-    answersLeft.push(answerValue);
-    } else { }
-   });
-   $('.quiz-wrapper button[type="submit"]').click( function() {
-	   if ( answersLeft.length > 0 ) {
-		    $('.lightbox-bg').show();
-      $('.status.deny').show();
-      $('.lightbox-bg').click( function() {
-		      $('.lightbox-bg').hide();
-        $('.status.deny').hide();
-        $('.lightbox-bg').unbind('click');
-      });
-	   } else {
-		    $('.lightbox-bg').show();
-      $('.status.confirm').show();
-	   }
-   });
-});
-
-
-</script>
-
+    </script>
 </body>
 </html>
