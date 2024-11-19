@@ -52,22 +52,57 @@ def fase2():
 def fase3():
     questions = [
         {
-            "question": "O que significa HTML?",
-            "options": ["Hyper Text Markup Language", "High Text Markup Language", "Hyper Tabular Markup Language",
-                        "Nenhuma dessas"],
-            "answer": "Hyper Text Markup Language"
+            "question": "O que é uma variável em programação?",
+            "options": [
+                "Um tipo de dado fixo",
+                "Um espaço na memória para armazenar valores",
+                "Um comando para executar um programa",
+                "Nenhuma das alternativas"
+            ],
+            "answer": "Um espaço na memória para armazenar valores"
         },
         {
-            "question": "Qual linguagem é usada para estilizar páginas da web?",
-            "options": ["HTML", "CSS", "JavaScript", "PHP"],
-            "answer": "CSS"
+            "question": "Qual destas é uma estrutura de repetição?",
+            "options": [
+                "if-else",
+                "while",
+                "print",
+                "return"
+            ],
+            "answer": "while"
         },
         {
-            "question": "Qual não é uma linguagem de programação?",
-            "options": ["Python", "Java", "HTML", "C++"],
-            "answer": "HTML"
+            "question": "O que significa 'debugar' um código?",
+            "options": [
+                "Executar o código para ver o resultado",
+                "Escrever comentários no código",
+                "Encontrar e corrigir erros no código",
+                "Apagar linhas de código desnecessárias"
+            ],
+            "answer": "Encontrar e corrigir erros no código"
+        },
+        {
+            "question": "O que é um algoritmo?",
+            "options": [
+                "Um tipo de dado usado em Java",
+                "Uma sequência de passos para resolver um problema",
+                "Uma função específica em Python",
+                "Um erro no programa"
+            ],
+            "answer": "Uma sequência de passos para resolver um problema"
+        },
+        {
+            "question": "Qual é o propósito de um comentário no código?",
+            "options": [
+                "Melhorar o desempenho do código",
+                "Ajudar o programador a documentar o que o código faz",
+                "Substituir linhas de código desnecessárias",
+                "Esconder erros no programa"
+            ],
+            "answer": "Ajudar o programador a documentar o que o código faz"
         }
     ]
+
     if request.method == 'POST':
         # Process the quiz submission
         total_corretas = 0
@@ -78,7 +113,7 @@ def fase3():
             if selected_option == question['answer']:
                 total_corretas +=1
 
-        if total_corretas == 3:
+        if total_corretas == 5:
             return render_template('result.html', total=len(questions)) # tirei o score = score
         else:
             return render_template('fase3.html', questions=questions,enumerate=enumerate,message=message)
