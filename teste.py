@@ -1,5 +1,5 @@
 from flask import Flask,render_template,url_for,request
-from time import sleep
+
 
 app = Flask(__name__,template_folder="templates")
 
@@ -70,12 +70,18 @@ def fase3():
     ]
     if request.method == 'POST':
         # Process the quiz submission
-        score = 0
+        total_corretas = 0
+        message = "Tente novamente. Responda todas as questões corretamente!"
+
         for idx, question in enumerate(questions):
             selected_option = request.form.get(f'question-{idx}')
             if selected_option == question['answer']:
-                score +=1
-        return render_template('result.html', score=score, total=len(questions))
+                total_corretas +=1
+
+        if total_corretas == 3:
+            return render_template('result.html', total=len(questions)) # tirei o score = score
+        else:
+            return render_template('fase3.html', questions=questions,enumerate=enumerate,message=message)
 
     return render_template('fase3.html', questions=questions,enumerate=enumerate)
 

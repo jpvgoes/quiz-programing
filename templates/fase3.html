@@ -11,6 +11,9 @@
 
     <div class="container">
         <h1>Fase 3</h1>
+        {% if message %}
+            <p><strong>{{ message }}</strong></p>
+        {% endif %}
         <form method="POST">
             {% for idx, question in enumerate(questions) %}
                 <div class="question">
