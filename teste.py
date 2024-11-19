@@ -1,4 +1,5 @@
 from flask import Flask,render_template,url_for,request
+from time import sleep
 
 app = Flask(__name__,template_folder="templates")
 
@@ -35,7 +36,7 @@ def fase1():
         correct_answers = sum(1 for i, question in enumerate(quiz_data) if user_answers[i] == question["answer"])
 
         # Mensagem de feedback
-        message = "Parabéns! Você passou em todas as fases!" if correct_answers == len(quiz_data) else "Tente novamente. Responda todas as questões corretamente!"
+        message = "Parabéns! Você passou na Fase 1!" if correct_answers == len(quiz_data) else "Tente novamente. Responda todas as questões corretamente!"
         return render_template("fase1.html", quiz_data=quiz_data, message=message, enumerate=enumerate)
 
     return render_template("fase1.html", quiz_data=quiz_data, enumerate=enumerate)
@@ -51,18 +52,18 @@ def fase2():
 def fase3():
     questions = [
         {
-            "question": "What does HTML stand for?",
+            "question": "O que significa HTML?",
             "options": ["Hyper Text Markup Language", "High Text Markup Language", "Hyper Tabular Markup Language",
-                        "None of these"],
+                        "Nenhuma dessas"],
             "answer": "Hyper Text Markup Language"
         },
         {
-            "question": "Which language is used for styling web pages?",
+            "question": "Qual linguagem é usada para estilizar páginas da web?",
             "options": ["HTML", "CSS", "JavaScript", "PHP"],
             "answer": "CSS"
         },
         {
-            "question": "Which is not a programming language?",
+            "question": "Qual não é uma linguagem de programação?",
             "options": ["Python", "Java", "HTML", "C++"],
             "answer": "HTML"
         }
