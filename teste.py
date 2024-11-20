@@ -19,12 +19,28 @@ def fases():
 def fase1():
     # Dados do Quiz
     quiz_data = [
-        {"question": "Qual linguagem é usada para estilizar páginas web?", "options": ["CSS", "Python", "HTML"],
-         "answer": "CSS"},
-        {"question": "Qual a linguagem principal para interatividade em páginas web?",
-         "options": ["JavaScript", "HTML", "C++"], "answer": "JavaScript"},
-        {"question": "Python é uma linguagem...", "options": ["Compilada", "Interpretada", "Marcada"],
-         "answer": "Interpretada"}
+        {"question": "Para começar a fazer um programa, é necessário que se entenda a lógica de como ele funciona. Assim como uma receita de bolo, você deve construir uma sequência de ações para chegar no resultado final (o bolo). Como você faria a receita de um bolo?",
+         "options": ["assar, preparar, separar ingredientes, comer", "preparar, separar ingredientes, assar, comer", "separar ingredientes, preparar, assar, comer","comer, preparar, assar, separar ingredientes"],
+         "answer": "separar ingredientes, preparar, assar, comer"},
+
+
+
+
+        {"question": "Existem algumas estruturas lógicas na programação que vão nos ajudar com isso. Por exemplo, SE não haver fermentos na separação dos ingredientes ENTÃO bolo não irá crescer SENÃO bolo irá ficar fofinho. Qual estrutura lógica seria essa?",
+         "options": ["if...else... (condicional)", "while (repetição)", "for (repetição)","do-while (repetição)"],
+         "answer": "if...else... (condicional)"},
+
+
+
+
+        {"question": "Além disso, possuímos estruturas de looping, para que o programa execute a mesma tarefa a quantidade de vezes desejada, utilizando-se um for, while, do-while, entre outras. Qual alternativa se aplicaria para a utilização dessa estrutura?",
+         "options": ["SE o ônibus atrasar ENTÃO perderei a aula", "ESCOLHER as opções do menu de um restaurante", "ir todo dia a escola ENQUANTO eu não me formar","SE eu passar no vestibular ENTAO entrarei na faculdade SENAO farei cursinho."],
+         "answer": "ir todo dia a escola ENQUANTO eu não me formar"},
+
+
+        {"question": "Na programação, possuímos \"variáveis\", que são espaços reservados para guardar alguma informação específica. Por exemplo, se eu perguntar ao usuário sua idade e quiser exibí-la depois, guardarei ela em uma variável. Na matemática, o que podemos dizer que se comporta como variáveis?",
+         "options": ["Ângulos agudos", "Incógnitas", "Operação de soma","Medida dos lados de um triângulo"],
+         "answer": "Incógnitas"}
     ]
 
 
